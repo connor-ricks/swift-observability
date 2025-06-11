@@ -6,7 +6,7 @@ An observability framework that provides a core foundation for logging `logs` an
 | Term               | Description                                                  |
 |--------------------|--------------------------------------------------------------|
 | `Emitter`          | An object that can emit an `Emission`<br><br>Both `Logger` and `Tracker` are implementations of an `Emitter`. |
-| `Emission`         | An object emitted from an `Emitter`<br><br>Both `Log` and `Tracker` are implementations of an `Emissions` |
+| `Emission`         | An object emitted from an `Emitter`<br><br>Both `Log` and `Event` are implementations of an `Emissions` |
 | `Emission Handler` | An object that recieves `Emissions` emitted from an `Emitter`<br><br>Both `LogHandler` and `EventHandler` are implementations of an `Emission Hanlder` |
 
 ## Basic Usage
