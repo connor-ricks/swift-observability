@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 
 /// An emission handler that outputs formatted logs to the console.
 struct TestEmissionHandler<Emission: Sendable, Context: Sendable>: Sendable {

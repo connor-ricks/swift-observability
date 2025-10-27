@@ -5,6 +5,17 @@ import Foundation
 /// `Metadata` is a typealias for `[String: MetadataValue]` the type of the metadata storage.
 public typealias Metadata = [String: MetadataValue]
 
+extension Metadata {
+    public init(_ dictionary: [String: any MetadataValueConvertible]) {
+        self = dictionary.mapValues { $0.asMetadataValue() }
+    }
+
+    public subscript(key key: String) -> (any MetadataValueConvertible)? {
+        get { self[key] }
+        set { self[key] = newValue?.asMetadataValue() }
+    }
+}
+
 // MARK: - Metadata + CustomStringConvertible
 
 extension Metadata {

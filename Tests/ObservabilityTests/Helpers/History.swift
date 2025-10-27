@@ -1,4 +1,4 @@
-import SoloObservability
+import Observability
 
 // MARK: - History
 

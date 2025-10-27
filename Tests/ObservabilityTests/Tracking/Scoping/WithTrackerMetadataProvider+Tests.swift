@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 import Testing
 
 @Suite("WithTrackerMetadataProvider Tests") struct WithTrackerMetadataProviderTests {
@@ -77,13 +77,13 @@ import Testing
         } operation: {
             withTrackerMetadataProvider(shouldReplaceExistingMetadata: true) {
                 [
-                    "with-tracking-metadata-provider": "metadata",
+                    "with-tracking-metadata-provider": "metadata"
                 ]
             } operation: {
                 /// Expect additional metadata to be added/overwritten.
                 @Dependency(\.tracker) var tracker1
                 #expect(tracker1.metadataProvider.metadata == [
-                    "with-tracking-metadata-provider": "metadata",
+                    "with-tracking-metadata-provider": "metadata"
                 ])
             }
 
@@ -173,7 +173,7 @@ import Testing
         } operation: {
             await withTrackerMetadataProvider(shouldReplaceExistingMetadata: true) {
                 [
-                    "with-tracking-metadata-provider": "metadata",
+                    "with-tracking-metadata-provider": "metadata"
                 ]
             } operation: {
                 /// Expect additional metadata to be added/overwritten.
@@ -181,7 +181,7 @@ import Testing
 
                 await Task {
                     #expect(tracker1.metadataProvider.metadata == [
-                        "with-tracking-metadata-provider": "metadata",
+                        "with-tracking-metadata-provider": "metadata"
                     ])
                 }.value
             }

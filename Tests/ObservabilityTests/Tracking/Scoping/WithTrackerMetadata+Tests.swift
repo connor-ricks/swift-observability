@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 import Testing
 
 @Suite("WithTrackerMetadata Tests") struct WithTrackerMetadataTests {

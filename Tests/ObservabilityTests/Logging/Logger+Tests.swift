@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 import Testing
 
 @Suite("Logger Tests") struct LoggerTests {

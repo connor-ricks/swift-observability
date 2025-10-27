@@ -1,10 +1,10 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 
 typealias TestLogHandler = TestEmissionHandler<Log, Log.Level>
 
 extension TestLogHandler: LogHandler {
-    var level: SoloObservability.Log.Level {
+    var level: Log.Level {
         get { context }
         set { context = newValue }
     }

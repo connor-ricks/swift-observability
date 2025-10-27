@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 import Testing
 
 @Suite("WithLoggerMetadataProvider Tests") struct WithLoggerMetadataProviderTests {
@@ -77,13 +77,13 @@ import Testing
         } operation: {
             withLoggerMetadataProvider(shouldReplaceExistingMetadata: true) {
                 [
-                    "with-logging-metadata-provider": "metadata",
+                    "with-logging-metadata-provider": "metadata"
                 ]
             } operation: {
                 /// Expect additional metadata to be added/overwritten.
                 @Dependency(\.logger) var logger1
                 #expect(logger1.metadataProvider.metadata == [
-                    "with-logging-metadata-provider": "metadata",
+                    "with-logging-metadata-provider": "metadata"
                 ])
             }
 
@@ -173,7 +173,7 @@ import Testing
         } operation: {
             await withLoggerMetadataProvider(shouldReplaceExistingMetadata: true) {
                 [
-                    "with-logging-metadata-provider": "metadata",
+                    "with-logging-metadata-provider": "metadata"
                 ]
             } operation: {
                 /// Expect additional metadata to be added/overwritten.
@@ -181,7 +181,7 @@ import Testing
 
                 await Task {
                     #expect(logger1.metadataProvider.metadata == [
-                        "with-logging-metadata-provider": "metadata",
+                        "with-logging-metadata-provider": "metadata"
                     ])
                 }.value
             }

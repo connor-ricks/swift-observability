@@ -1,5 +1,5 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 
 typealias TestEventHandler = TestEmissionHandler<Event, Void>
 

@@ -37,12 +37,12 @@ extension Logger where Handler == any LogHandler {
     }
 }
 
-// MARK: - DependencyValues + SoloLogger
+// MARK: - DependencyValues + Logger
 
 extension DependencyValues {
     /// A logger useful for logging messages.
     public var logger: Logger {
-        get { observability.logger }
-        set { observability.logger = newValue }
+        get { observables.logger }
+        set { observables.logger = newValue }
     }
 }

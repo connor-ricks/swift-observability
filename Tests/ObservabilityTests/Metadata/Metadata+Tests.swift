@@ -1,34 +1,30 @@
 import Foundation
-@testable import SoloObservability
+@testable import Observability
 import Testing
 
 @Suite("LoggerMetadata Tests") struct MetadataTests {
 
-    // MARK: Dog
-
-    struct Dog: CustomStringConvertible {
-        var name: String
-        var description: String { "Dog(name: \(name))" }
-    }
-
     // MARK: Tests
 
     @Test func test_metadata_json() {
-        let metadata: Metadata = [
-            "key": "value",
-            "array": ["1", "2", "3"],
-            "dictionary": [
-                "a": "A",
-                "b": "B",
-                "c": ["1", "2", "3"],
-                "d": [
-                    "1": "a",
-                    "2": "b",
-                    "3": "c",
-                ],
+        let dictionary: Metadata = [
+            "a": "A",
+            "b": "B",
+            "c": ["1", "2", "3"],
+            "d": [
+                "1": "a",
+                "2": "b",
+                "3": "c",
             ],
-            "dog": .stringConvertible(Dog(name: "Max")),
         ]
+        let metadata = Metadata([
+            "array": ["1", "2", "3"],
+            "bool": true,
+            "dictionary": dictionary,
+            "double": 5.0,
+            "int": 5,
+            "string": "hello world!",
+        ])
 
         // swiftlint:disable indentation_width
         #expect(metadata.json == """
@@ -38,6 +34,7 @@ import Testing
             "2",
             "3"
           ],
+          "bool" : true,
           "dictionary" : {
             "a" : "A",
             "b" : "B",
@@ -52,8 +49,9 @@ import Testing
               "3" : "c"
             }
           },
-          "dog" : "Dog(name: Max)",
-          "key" : "value"
+          "double" : 5,
+          "int" : 5,
+          "string" : "hello world!"
         }
         """)
         // swiftlint:enable indentation_width
