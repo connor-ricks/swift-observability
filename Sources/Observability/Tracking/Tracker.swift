@@ -39,7 +39,7 @@ extension Tracker {
 extension DependencyValues {
     /// A tracker useful for tracking events.
     public var tracker: Tracker {
-        get { observability.tracker }
-        set { observability.tracker = newValue }
+        get { observables.tracker }
+        set { observables.tracker = newValue }
     }
 }

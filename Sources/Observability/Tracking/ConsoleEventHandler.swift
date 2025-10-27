@@ -1,4 +1,4 @@
-import Foundation
+public import Foundation
 
 public typealias ConsoleEventHandler = ConsoleEmissionHandler<Event, Void>
 

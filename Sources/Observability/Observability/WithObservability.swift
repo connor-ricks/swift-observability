@@ -1,37 +1,37 @@
 @_exported import Dependencies
 import Foundation
 
-/// Updates observability for the duration of a synchronous operation.
+/// Updates observables for the duration of a synchronous operation.
 ///
 /// - Parameters:
-///   - updateObservability: A closure for updating the current observability.
-///   - operation: An operation to perform wherein the observability has been overridden.
+///   - updateObservables: A closure for updating the current observables.
+///   - operation: An operation to perform wherein the observables has been overridden.
 ///
 /// - Returns: The result returned from `operation`.
 @discardableResult
 public func withObservability<R>(
-    _ updateObservability: (inout Observability) throws -> Void,
+    _ updateObservables: (inout Observables) throws -> Void,
     operation: () throws -> R
 ) rethrows -> R {
     try withDependencies({
-        try updateObservability(&$0.observability)
+        try updateObservables(&$0.observables)
     }, operation: operation)
 }
 
-/// Updates observability for the duration of an asynchronous operation.
+/// Updates observables for the duration of an asynchronous operation.
 ///
 /// - Parameters:
-///   - updateObservability: A closure for updating the current observability.
-///   - operation: An operation to perform wherein the observability has been overridden.
+///   - updateObservables: A closure for updating the current observables.
+///   - operation: An operation to perform wherein the observables has been overridden.
 ///
 /// - Returns: The result returned from `operation`.
 @discardableResult
 public func withObservability<R>(
     isolation: isolated (any Actor)? = #isolation,
-    _ updateObservability: (inout Observability) throws -> Void,
+    _ updateObservables: (inout Observables) throws -> Void,
     operation: () async throws -> R
 ) async rethrows -> R {
     try await withDependencies({
-        try updateObservability(&$0.observability)
+        try updateObservables(&$0.observables)
     }, operation: operation)
 }
